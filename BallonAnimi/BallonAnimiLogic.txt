@@ -1,0 +1,85 @@
+Variables : 
+	Image b[];
+	int[] bduration;
+	Animation ballonBlast;
+Initialization :
+	b = new Image[10];
+	bduration = new int[10];
+Post-Initialization :
+		b[0] = new Image("/BallonAnimi/Frame1.png");
+		b[1] = new Image("/BallonAnimi/Frame2.png");
+		b[2] = new Image("/BallonAnimi/Frame3.png");
+		b[3] = new Image("/BallonAnimi/Frame4.png");
+		b[4] = new Image("/BallonAnimi/Frame5.png");
+		b[5] = new Image("/BallonAnimi/Frame6.png");
+		b[6] = new Image("/BallonAnimi/Frame7.png");
+		b[7] = new Image("/BallonAnimi/Frame8.png");
+		b[8] = new Image("/BallonAnimi/Frame9.png");
+		b[9] = new Image("/BallonAnimi/Frame10.png");
+			
+		for( int i = 0; i < 10; i++ )
+		{
+			bduration[i] = 50;
+		}
+			
+		ballonBlast = new Animation(b,bduration);
+
+Render :
+	ballonBlast.draw(200,200);
+	ballonBlast.setLooping(false);
+
+
+class Ballon extends Image
+{
+	Image b[];
+	int[] bduration;
+	Animation ballonBlast;
+	Polygon collider;
+	float Bx;
+	float By;
+	
+	public Ballon( String source ) throws SlickException 
+	{
+		super(source);
+		b = new Image[10];
+		bduration = new int[10];
+		
+		b[0] = new Image("/BallonAnimi/Frame1.png");
+		b[1] = new Image("/BallonAnimi/Frame2.png");
+		b[2] = new Image("/BallonAnimi/Frame3.png");
+		b[3] = new Image("/BallonAnimi/Frame4.png");
+		b[4] = new Image("/BallonAnimi/Frame5.png");
+		b[5] = new Image("/BallonAnimi/Frame6.png");
+		b[6] = new Image("/BallonAnimi/Frame7.png");
+		b[7] = new Image("/BallonAnimi/Frame8.png");
+		b[8] = new Image("/BallonAnimi/Frame9.png");
+		b[9] = new Image("/BallonAnimi/Frame10.png");
+			
+		for( int i = 0; i < 10; i++ )
+		{
+			bduration[i] = 50;
+		}
+			
+		ballonBlast = new Animation(b,bduration);
+	}
+	
+	@Override
+	public void draw(float a, float b)
+	{	
+		super.draw(a, b);
+		Bx = a;
+		By = b;
+		collider = new Polygon();		
+		float x[] = { Bx + 26, Bx + 8, Bx + 4, Bx + 12, Bx + 26, Bx + 38, Bx + 48, Bx + 42 };
+		float y[] = { By + 8, By + 16, By + 38, By + 58, By + 66, By + 58, By + 36, By + 16 };
+		for( int i = 0; i< 8; i++ )
+		{
+			collider.addPoint(x[i], y[i]);
+		}
+	}
+}
+
+
+
+
+
